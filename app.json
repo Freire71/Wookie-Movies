@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "MoviesApp",
+    "version": "1.0.0",
+    "slug": "movies-app",
+    "ios": {
+      "bundleIdentifier": "com.alexfreirespinola.moviesapp",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.alexfreirespinola.moviesapp",
+      "versionCode": 1
+    }
+  }
+}
