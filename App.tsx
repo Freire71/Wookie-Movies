@@ -20,13 +20,15 @@ import {
 
 import Theme from './src/config/Theme';
 import HomePage from './src/pages/Home';
+import SplashScreenPage from './src/pages/Splashscreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export type TabsParamList = {
+  HomeTabs: undefined;
   Home: undefined;
   Search: undefined;
+  Splashscreen: undefined;
 };
-
-const Tab = createBottomTabNavigator<TabsParamList>();
 
 const routeIcons = {
   Home: 'home-outline',
@@ -34,6 +36,36 @@ const routeIcons = {
   Search: 'search-outline',
   SearchFocused: 'search',
 };
+
+const Stack = createNativeStackNavigator();
+
+const HomeTabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          const iconName =
+            routeIcons[focused ? `${route.name}Focused` : `${route.name}`];
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#FFF',
+        tabBarInactiveTintColor: '#363740',
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: '#1c1c26',
+        },
+        tabBarShowLabel: false,
+        tabBarBadgeStyle: {
+          backgroundColor: 'red',
+        },
+      })}
+    >
+      <Tab.Screen name="Home" component={HomePage} />
+    </Tab.Navigator>
+  );
+};
+
+const Tab = createBottomTabNavigator<TabsParamList>();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -53,27 +85,13 @@ export default function App() {
   return (
     <ThemeProvider theme={Theme}>
       <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              const iconName =
-                routeIcons[focused ? `${route.name}Focused` : `${route.name}`];
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: '#FFF',
-            tabBarInactiveTintColor: '#363740',
-            headerShown: false,
-            tabBarStyle: {
-              backgroundColor: '#1c1c26',
-            },
-            tabBarShowLabel: false,
-            tabBarBadgeStyle: {
-              backgroundColor: 'red',
-            },
-          })}
+        <Stack.Navigator
+          initialRouteName="Splashscreen"
+          screenOptions={{ headerShown: false }}
         >
-          <Tab.Screen name="Home" component={HomePage} />
-        </Tab.Navigator>
+          <Stack.Screen name="Splashscreen" component={SplashScreenPage} />
+          <Stack.Screen name="HomeTabs" component={HomeTabs} />
+        </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
   );
