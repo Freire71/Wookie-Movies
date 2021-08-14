@@ -1,21 +1,11 @@
 import React from 'react';
-import { View, Text, Platform } from 'react-native';
-import {
-  responsiveScreenHeight,
-  responsiveScreenWidth,
-  responsiveWidth,
-  responsiveHeight,
-} from 'react-native-responsive-dimensions';
 import styled from 'styled-components/native';
+import { IMovie } from './MoviesCarousel';
 
 const Image = styled.Image`
-  width: ${responsiveWidth(45)}px;
-  height: ${responsiveHeight(35)}px;
+  width: 175px;
+  height: 275px;
   resize-mode: contain;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 `;
 
 const Container = styled.TouchableOpacity`
@@ -27,20 +17,26 @@ const Container = styled.TouchableOpacity`
 `;
 
 export const hints = {
-  cardImage: 'When clicked, you will navigate to movie page',
+  cardImage: 'When clicked, you will navigate to movie details page',
 };
 
 interface ICarouselCardProps {
-  imageUri: string;
+  onMovieClick: (movie: IMovie) => void;
+  movie: IMovie;
+  testID?: string;
 }
 
-export const CarouselCard = ({ imageUri }: ICarouselCardProps) => {
+export const CarouselCard = ({
+  movie,
+  testID,
+  onMovieClick,
+}: ICarouselCardProps) => {
   return (
-    <Container>
+    <Container testID={testID} onPress={() => onMovieClick(movie)}>
       <Image
         accessibilityHint={hints.cardImage}
         source={{
-          uri: imageUri,
+          uri: movie.poster,
         }}
       />
     </Container>
