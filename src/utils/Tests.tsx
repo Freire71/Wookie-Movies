@@ -15,3 +15,7 @@ const customRender = (ui: any) => render(ui, { wrapper: renderWithProvider });
 
 export * from '@testing-library/react-native';
 export { customRender as render };
+
+export function testID(id: string) {
+  return __DEV__ ? { testID: id } : {};
+}
