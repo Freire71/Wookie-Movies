@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemeProvider } from 'styled-components/native';
 import AppLoading from 'expo-app-loading';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import {
   useFonts,
@@ -23,7 +24,7 @@ import Theme from './src/config/Theme';
 import HomePage from './src/pages/Home';
 import SplashScreenPage from './src/pages/Splashscreen';
 import MovieDetailsPage from './src/pages/MovieDetails';
-import { IMovie } from './src/components/MoviesCarousel';
+import { IMovie } from './src/api/types/movie';
 
 export type TabsParamList = {
   HomeTabs: undefined;
@@ -47,6 +48,8 @@ const routeIcons = {
 
 const Tab = createBottomTabNavigator<ParamsList>();
 const Stack = createNativeStackNavigator<ParamsList>();
+
+const queryClient = new QueryClient();
 
 const HomeTabs = () => {
   return (
@@ -90,6 +93,7 @@ export default function App() {
     return <AppLoading />;
   }
   return (
+    <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={Theme}>
       <NavigationContainer>
         <Stack.Navigator
@@ -122,5 +126,6 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
+    </QueryClientProvider>
   );
 }
