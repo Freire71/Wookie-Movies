@@ -7,11 +7,11 @@ import {
   Platform,
 } from 'react-native';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { TabsParamList } from '../../App';
+import { ParamsList } from '../../App';
 import MoviesCarousel, { IMovie } from '../components/MoviesCarousel';
 import styled from 'styled-components/native';
 
-interface IProps extends BottomTabScreenProps<TabsParamList, 'Home'> {}
+interface IProps extends BottomTabScreenProps<ParamsList, 'Home'> {}
 
 export interface ICarouselData {
   genreTitle: string;
@@ -388,7 +388,7 @@ const Container = styled.SafeAreaView`
   margin-top: ${androidTopMargin}px;
 `;
 
-const Home = (props: IProps) => {
+const Home = ({ navigation }: IProps) => {
   const categoriesMap = new Map();
   movies.forEach((movie: IMovie) =>
     movie.genres.forEach((genre) => {
@@ -406,9 +406,9 @@ const Home = (props: IProps) => {
       data: value,
     });
   });
-  console.log(JSON.stringify(formatedData[0]));
   const onMovieClick = (movie: IMovie) => {
     console.log({ movie });
+    navigation.navigate('MovieDetails', { movie });
   };
   const keyExtractor = (item: ICarouselData, index: number) =>
     `${item.genreTitle}/${index}`;
