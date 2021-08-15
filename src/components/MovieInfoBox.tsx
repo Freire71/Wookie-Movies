@@ -52,20 +52,19 @@ const MovieInfoBox = ({ data, type }: IMovieInfoBox) => {
     director: 'user-friends',
   };
   const iconContainerTestID = `movie-info-${type}-icon`;
-
   const icon = (
     <InfoBoxIconContainer {...testID(iconContainerTestID)}>
       {type === 'director' ? (
         <FontAwesome5
           size={iconSize}
           color={iconColor}
-          name={iconNames[type] as any}
+          name={iconNames[type] as 'user-friends'}
         />
       ) : (
         <Entypo
           size={iconSize}
           color={iconColor}
-          name={iconNames[type] as any}
+          name={iconNames[type] as 'clapperboard' | 'calendar' | 'time-slot'}
         />
       )}
     </InfoBoxIconContainer>
