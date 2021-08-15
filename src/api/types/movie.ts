@@ -1,4 +1,4 @@
-export type IMovie = {
+export type Movie = {
   backdrop: string;
   cast: string[];
   classification: string;

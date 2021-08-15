@@ -4,7 +4,7 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { ParamsList } from '../../App';
 import MoviesCarousel from '../components/MoviesCarousel';
 import styled from 'styled-components/native';
-import { IMovie } from '../api/types/movie';
+import { Movie } from '../api/types/movie';
 import { getMovies } from '../api/hooks/movies';
 import ActivityIndicator from '../components/ActivityIndicator';
 
@@ -12,7 +12,7 @@ interface IProps extends BottomTabScreenProps<ParamsList, 'Home'> {}
 
 export interface ICarouselData {
   genreTitle: string;
-  data: IMovie[];
+  data: Movie[];
 }
 
 const androidTopMargin = Platform.OS === 'android' ? 24 : 0;
@@ -23,9 +23,9 @@ const Container = styled.SafeAreaView`
   margin-top: ${androidTopMargin}px;
 `;
 
-const formatMoviesPayload = (movies: IMovie[]) => {
+const formatMoviesPayload = (movies: Movie[]) => {
   const categoriesMap = new Map();
-  movies.forEach((movie: IMovie) =>
+  movies.forEach((movie: Movie) =>
     movie.genres.forEach((genre) => {
       if (!categoriesMap.has(genre)) {
         categoriesMap.set(genre, [movie]);
@@ -45,7 +45,7 @@ const formatMoviesPayload = (movies: IMovie[]) => {
 };
 
 const Home = ({ navigation }: IProps) => {
-  const [movies, setMovies] = useState<IMovie[] | []>([]);
+  const [movies, setMovies] = useState<Movie[] | []>([]);
   const { data, error, isLoading } = getMovies();
 
   useEffect(() => {
@@ -54,13 +54,14 @@ const Home = ({ navigation }: IProps) => {
     }
   }, [data, isLoading]);
 
-  const onMovieClick = (movie: IMovie) => {
+  const onMovieClick = (movie: Movie) => {
     navigation.navigate('MovieDetails', { movie });
   };
 
   const keyExtractor = (item: ICarouselData, index: number) =>
     `${item.genreTitle}/${index}`;
 
+  //TODO: add correct type
   const renderItem = ({ item }: ListRenderItemInfo<any>) => {
     return (
       <MoviesCarousel

@@ -24,7 +24,7 @@ import Theme from './src/config/Theme';
 import HomePage from './src/pages/Home';
 import SplashScreenPage from './src/pages/Splashscreen';
 import MovieDetailsPage from './src/pages/MovieDetails';
-import { IMovie } from './src/api/types/movie';
+import { Movie } from './src/api/types/movie';
 
 export type TabsParamList = {
   HomeTabs: undefined;
@@ -34,7 +34,7 @@ export type TabsParamList = {
 };
 
 export type StackParamsList = {
-  MovieDetails: { movie: IMovie };
+  MovieDetails: { movie: Movie };
 };
 
 export type ParamsList = TabsParamList & StackParamsList & {};

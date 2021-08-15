@@ -5,7 +5,7 @@ import { ScrollView, View } from 'react-native';
 import MovieInfoCarousel from '../components/MovieInfoCarousel';
 import MovieStars from '../components/MovieStars';
 import MovieContent from '../components/MovieContent';
-import { IMovie } from '../api/types/movie';
+import { Movie } from '../api/types/movie';
 
 const Container = styled.ScrollView`
   padding: 16px;
@@ -55,9 +55,9 @@ const StarsContainer = styled.View`
   width: ${responsiveWidth(50)}px;
   flex-direction: row;
 `;
-
+//TODO: add correct type
 export const MovieDetails = (props: any) => {
-  const { movie }: { movie: IMovie } = props.route.params;
+  const { movie }: { movie: Movie } = props.route.params;
   const movieTitleWithRating = `${movie.title} (${movie.imdb_rating.toFixed(
     1
   )})`;

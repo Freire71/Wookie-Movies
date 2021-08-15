@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import { get } from '..';
-import { IMovie } from '../types/movie';
+import { Movie } from '../types/movie';
 
 type MoviesPayload = {
-  movies: IMovie[];
+  movies: Movie[];
 };
 
 export const getMovies = () => {
