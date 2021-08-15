@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { FlatList, ListRenderItemInfo } from 'react-native';
-import CarouselCard from './CarouselCard';
+import MovieCard from './MovieCard';
 import { responsiveScreenFontSize } from 'react-native-responsive-dimensions';
 import { testID } from '../utils/Tests';
 import { Movie } from '../api/types/movie';
@@ -36,7 +36,7 @@ const MoviesCarousel = ({
   const keyExtractor = (item: Movie, index: number) => `${item.id}/${index}`;
   const renderItem = ({ item, index }: ListRenderItemInfo<Movie>) => {
     return (
-      <CarouselCard
+      <MovieCard
         movie={item}
         onMovieClick={onMovieClick}
         {...testID(`movie-card`)}

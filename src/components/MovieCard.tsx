@@ -20,17 +20,13 @@ export const hints = {
   cardImage: 'When clicked, you will navigate to movie details page',
 };
 
-interface ICarouselCardProps {
+interface IMovieCardProps {
   onMovieClick: (movie: Movie) => void;
   movie: Movie;
   testID?: string;
 }
 
-export const CarouselCard = ({
-  movie,
-  testID,
-  onMovieClick,
-}: ICarouselCardProps) => {
+export const MovieCard = ({ movie, testID, onMovieClick }: IMovieCardProps) => {
   return (
     <Container testID={testID} onPress={() => onMovieClick(movie)}>
       <Image
@@ -43,4 +39,4 @@ export const CarouselCard = ({
   );
 };
 
-export default CarouselCard;
+export default MovieCard;

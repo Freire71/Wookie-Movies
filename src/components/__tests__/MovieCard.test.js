@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import { render, fireEvent } from '../../utils/Tests';
-import CarouselCard, { hints } from '../CarouselCard';
+import MovieCard, { hints } from '../MovieCard';
 
 const movie = {
   backdrop:
@@ -22,11 +22,11 @@ const movie = {
   title: 'The Dark Knight',
 };
 
-describe('<CarouselCard />', () => {
+describe('<MovieCard />', () => {
   it('should render component properly', () => {
     const onMovieClickFn = jest.fn();
     const { getByA11yHint, getByTestId } = render(
-      <CarouselCard
+      <MovieCard
         movie={movie}
         onMovieClick={onMovieClickFn}
         testID="card-container"
