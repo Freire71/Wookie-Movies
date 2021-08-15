@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemeProvider } from 'styled-components/native';
 import AppLoading from 'expo-app-loading';
@@ -21,7 +22,8 @@ import {
 import Theme from './src/config/Theme';
 import HomePage from './src/pages/Home';
 import SplashScreenPage from './src/pages/Splashscreen';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MovieDetailsPage from './src/pages/MovieDetails';
+import { IMovie } from './src/components/MoviesCarousel';
 
 export type TabsParamList = {
   HomeTabs: undefined;
@@ -30,6 +32,12 @@ export type TabsParamList = {
   Splashscreen: undefined;
 };
 
+export type StackParamsList = {
+  MovieDetails: { movie: IMovie };
+};
+
+export type ParamsList = TabsParamList & StackParamsList & {};
+
 const routeIcons = {
   Home: 'home-outline',
   HomeFocused: 'home',
@@ -37,7 +45,8 @@ const routeIcons = {
   SearchFocused: 'search',
 };
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator<ParamsList>();
+const Stack = createNativeStackNavigator<ParamsList>();
 
 const HomeTabs = () => {
   return (
@@ -52,7 +61,7 @@ const HomeTabs = () => {
         tabBarInactiveTintColor: '#363740',
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#1c1c26',
+          backgroundColor: Theme.backgroundColor,
         },
         tabBarShowLabel: false,
         tabBarBadgeStyle: {
@@ -64,8 +73,6 @@ const HomeTabs = () => {
     </Tab.Navigator>
   );
 };
-
-const Tab = createBottomTabNavigator<TabsParamList>();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -91,6 +98,27 @@ export default function App() {
         >
           <Stack.Screen name="Splashscreen" component={SplashScreenPage} />
           <Stack.Screen name="HomeTabs" component={HomeTabs} />
+          <Stack.Screen
+            name="MovieDetails"
+            component={MovieDetailsPage}
+            options={({ route, navigation }) => ({
+              title: route.params.movie.title,
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: Theme.backgroundColor,
+              },
+              headerTitleStyle: {
+                color: '#FFF',
+              },
+              // headerLeft: () => {
+              //   return (
+              //     <TouchableOpacity onPress={navigation.goBack()}>
+              //       <Ionicons name="arrow-back" size={25} color="#FFF" />
+              //     </TouchableOpacity>
+              //   );
+              // },
+            })}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
