@@ -11,7 +11,7 @@ const fonts = {
 };
 
 export default {
-  ...fonts,
+  fonts,
   backgroundColor: '#1c1c26',
   lightGrey: '#2b2c33',
 };
