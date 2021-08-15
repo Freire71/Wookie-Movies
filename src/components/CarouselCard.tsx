@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { IMovie } from './MoviesCarousel';
+import { IMovie } from '../api/types/movie';
 
 const Image = styled.Image`
   width: 175px;

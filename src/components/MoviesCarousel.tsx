@@ -4,6 +4,7 @@ import { FlatList, ListRenderItemInfo } from 'react-native';
 import CarouselCard from './CarouselCard';
 import { responsiveScreenFontSize } from 'react-native-responsive-dimensions';
 import { testID } from '../utils/Tests';
+import { IMovie } from '../api/types/movie';
 
 const Container = styled.View`
   width: 100%;
@@ -26,22 +27,6 @@ export interface IMoviesCarouselProps {
   data: IMovie[];
   onMovieClick: (movie: IMovie) => void;
 }
-
-export type IMovie = {
-  backdrop: string;
-  cast: string[];
-  classification: string;
-  director: string | string[];
-  genres: string[];
-  id: string;
-  imdb_rating: number;
-  length: string;
-  overview: string;
-  poster: string;
-  released_on: string;
-  slug: string;
-  title: string;
-};
 
 const MoviesCarousel = ({
   data,

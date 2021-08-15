@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { IMovie } from '../components/MoviesCarousel';
 import { responsiveWidth } from 'react-native-responsive-dimensions';
 import { ScrollView, View } from 'react-native';
 import MovieInfoCarousel from '../components/MovieInfoCarousel';
 import MovieStars from '../components/MovieStars';
 import MovieContent from '../components/MovieContent';
+import { IMovie } from '../api/types/movie';
 
 const Container = styled.ScrollView`
   padding: 16px;

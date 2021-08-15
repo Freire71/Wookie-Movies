@@ -8,8 +8,9 @@ import {
 } from 'react-native';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { ParamsList } from '../../App';
-import MoviesCarousel, { IMovie } from '../components/MoviesCarousel';
+import MoviesCarousel from '../components/MoviesCarousel';
 import styled from 'styled-components/native';
+import { IMovie } from '../api/types/movie';
 
 interface IProps extends BottomTabScreenProps<ParamsList, 'Home'> {}
 
