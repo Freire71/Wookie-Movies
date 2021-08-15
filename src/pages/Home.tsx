@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  ListRenderItemInfo,
-  Platform,
-} from 'react-native';
+import { FlatList, ListRenderItemInfo, Platform } from 'react-native';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { ParamsList } from '../../App';
 import MoviesCarousel from '../components/MoviesCarousel';
