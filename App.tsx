@@ -24,13 +24,14 @@ import Theme from './src/config/Theme';
 import HomePage from './src/pages/Home';
 import SplashScreenPage from './src/pages/Splashscreen';
 import MovieDetailsPage from './src/pages/MovieDetails';
+import MoviesSearchPage from './src/pages/MoviesSearch';
 import { Movie } from './src/api/types/movie';
 
 export type TabsParamList = {
   HomeTabs: undefined;
   Home: undefined;
-  Search: undefined;
   Splashscreen: undefined;
+  MoviesSearch: undefined;
 };
 
 export type StackParamsList = {
@@ -42,8 +43,8 @@ export type ParamsList = TabsParamList & StackParamsList & {};
 const routeIcons = {
   Home: 'home-outline',
   HomeFocused: 'home',
-  Search: 'search-outline',
-  SearchFocused: 'search',
+  MoviesSearch: 'search-outline',
+  MoviesSearchFocused: 'search',
 };
 
 const Tab = createBottomTabNavigator<ParamsList>();
@@ -73,6 +74,7 @@ const HomeTabs = () => {
       })}
     >
       <Tab.Screen name="Home" component={HomePage} />
+      <Tab.Screen name="MoviesSearch" component={MoviesSearchPage} />
     </Tab.Navigator>
   );
 };
@@ -94,38 +96,38 @@ export default function App() {
   }
   return (
     <QueryClientProvider client={queryClient}>
-    <ThemeProvider theme={Theme}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Splashscreen"
-          screenOptions={{ headerShown: false }}
-        >
-          <Stack.Screen name="Splashscreen" component={SplashScreenPage} />
-          <Stack.Screen name="HomeTabs" component={HomeTabs} />
-          <Stack.Screen
-            name="MovieDetails"
-            component={MovieDetailsPage}
-            options={({ route, navigation }) => ({
-              title: route.params.movie.title,
-              headerShown: true,
-              headerStyle: {
-                backgroundColor: Theme.backgroundColor,
-              },
-              headerTitleStyle: {
-                color: '#FFF',
-              },
-              // headerLeft: () => {
-              //   return (
-              //     <TouchableOpacity onPress={navigation.goBack()}>
-              //       <Ionicons name="arrow-back" size={25} color="#FFF" />
-              //     </TouchableOpacity>
-              //   );
-              // },
-            })}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
+      <ThemeProvider theme={Theme}>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Splashscreen"
+            screenOptions={{ headerShown: false }}
+          >
+            <Stack.Screen name="Splashscreen" component={SplashScreenPage} />
+            <Stack.Screen name="HomeTabs" component={HomeTabs} />
+            <Stack.Screen
+              name="MovieDetails"
+              component={MovieDetailsPage}
+              options={({ route, navigation }) => ({
+                title: route.params.movie.title,
+                headerShown: true,
+                headerStyle: {
+                  backgroundColor: Theme.backgroundColor,
+                },
+                headerTitleStyle: {
+                  color: '#FFF',
+                },
+                // headerLeft: () => {
+                //   return (
+                //     <TouchableOpacity onPress={navigation.goBack()}>
+                //       <Ionicons name="arrow-back" size={25} color="#FFF" />
+                //     </TouchableOpacity>
+                //   );
+                // },
+              })}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
