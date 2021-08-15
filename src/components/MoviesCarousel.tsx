@@ -11,7 +11,7 @@ const Container = styled.View`
   margin-bottom: 12px;
 `;
 const GenreTitle = styled.Text`
-  font-family: ${(props) => props.theme.Barlow_500Medium};
+  font-family: ${(props) => props.theme.fonts.Barlow_500Medium};
   font-size: ${responsiveScreenFontSize(3.5)}px;
   color: #fff;
   margin-bottom: 6px;
