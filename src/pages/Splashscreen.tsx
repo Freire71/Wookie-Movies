@@ -26,14 +26,14 @@ export const MovieAnimation = styled(LottieAnimation).attrs({
   source: movieAnimation,
   autoPlay: true,
   loop: true,
-  speed: 2,
+  speed: 1.5,
 })`
   width: ${responsiveWidth(25)}px;
   height: ${responsiveHeight(40)}px;
 `;
 
 export const Title = styled.Text`
-  font-family: ${(props) => props.theme.Barlow_700Bold};
+  font-family: ${(props) => props.theme.fonts.Barlow_700Bold};
   margin-bottom: 12px;
   color: #fff;
   font-size: ${responsiveFontSize(4)}px;
