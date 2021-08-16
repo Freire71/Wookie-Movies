@@ -46,7 +46,7 @@ const ListMessage = ({
 
 const EMPTY_LIST_MESSAGE_TITLE = "Unfortunately we don't have this movie 😢";
 const EMPTY_LIST_MESSAGE_SUBTITLE =
-  'Try a name from another movie or enjoy the movies available on our home page';
+  'Try a different movie name or enjoy the movies available on our home page';
 const ERROR_MESSAGE = 'Ops... Something went wrong. Please try again later';
 
 const MoviesSearchList = ({
