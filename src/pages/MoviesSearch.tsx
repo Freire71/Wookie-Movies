@@ -11,26 +11,30 @@ import MoviesSearchList from '../components/MoviesSearchList';
 
 interface IProps extends BottomTabScreenProps<ParamsList, 'MoviesSearch'> {}
 
-const androidTopMargin = Platform.OS === 'android' ? 24 : 0;
-
 const Container = styled.SafeAreaView`
   background-color: #1c1c26;
   flex: 1;
-  margin-top: ${androidTopMargin}px;
+  padding-top: 6px;
 `;
 
 const MoviesSearch = ({ navigation }: IProps) => {
   const [movieToSearch, setMovieToSearch] = useState('');
   const [moviesFound, setMoviesFound] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
   const { refetch, data, error, isLoading } = getMoviesSearch(movieToSearch);
 
   useEffect(() => {
     if (!isLoading && !error && data) {
+      setIsFetching(false);
       setMoviesFound(data.data.movies);
+    }
+    if (error) {
+      setIsFetching(false);
     }
   }, [data, isLoading, error]);
 
   useEffect(() => {
+    setIsFetching(true);
     refetch();
   }, [movieToSearch]);
 
@@ -44,12 +48,12 @@ const MoviesSearch = ({ navigation }: IProps) => {
 
   return (
     <Container>
-      <MoviesSearchInput onSearch={onSearch} isFetching={isLoading} />
+      <MoviesSearchInput onSearch={onSearch} isFetching={isFetching} />
       <MoviesSearchList
         data={moviesFound}
         onMovieClick={onMovieClick}
         failedToFech={!!error}
-        isFetching={isLoading}
+        isFetching={isFetching}
       />
     </Container>
   );
