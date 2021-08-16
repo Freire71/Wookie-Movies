@@ -14,12 +14,12 @@ export const Container = styled.View`
 
 export const Content = styled.View`
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 12px;
   align-items: center;
   justify-content: center;
   width: ${responsiveScreenWidth(20)}px;
-  height: ${responsiveScreenHeight(10)}px;
-  border: 1px solid grey;
+  height: ${responsiveScreenWidth(17.5)}px;
+  border: 1.5px solid lightcyan;
 `;
 
 const Spinner = styled.ActivityIndicator.attrs({
