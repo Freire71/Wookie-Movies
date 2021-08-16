@@ -15,12 +15,10 @@ export interface ICarouselData {
   data: Movie[];
 }
 
-const androidTopMargin = Platform.OS === 'android' ? 24 : 0;
-
 const Container = styled.SafeAreaView`
   background-color: #1c1c26;
   flex: 1;
-  margin-top: ${androidTopMargin}px;
+  padding-top: 6px;
 `;
 
 const formatMoviesPayload = (movies: Movie[]) => {
