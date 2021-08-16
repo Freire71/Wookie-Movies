@@ -13,6 +13,7 @@ interface IMoviesSearchListProps {
 
 const ListMessageContainer = styled.View`
   margin-top: 12px;
+  padding-horizontal: 12px;
 `;
 const ListMessageTitle = styled.Text`
   text-align: center;
