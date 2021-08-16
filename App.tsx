@@ -26,6 +26,7 @@ import SplashScreenPage from './src/pages/Splashscreen';
 import MovieDetailsPage from './src/pages/MovieDetails';
 import MoviesSearchPage from './src/pages/MoviesSearch';
 import { Movie } from './src/api/types/movie';
+import { StatusBar } from 'react-native';
 
 export type TabsParamList = {
   HomeTabs: undefined;
@@ -98,6 +99,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={Theme}>
         <NavigationContainer>
+            <StatusBar barStyle="light-content" />
           <Stack.Navigator
             initialRouteName="Splashscreen"
             screenOptions={{ headerShown: false }}
