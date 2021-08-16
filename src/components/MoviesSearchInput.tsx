@@ -21,7 +21,7 @@ const MoviesSearchInputContainer = styled.View`
   margin-top: ${androidInputTopMargin}px;
   background-color: ${(props) => props.theme.lightGrey};
   width: 90%;
-  height: 60px;
+  height: 70px;
   flex-direction: row;
   align-items: center;
   align-self: center;
