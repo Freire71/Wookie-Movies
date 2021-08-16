@@ -26,7 +26,9 @@ import SplashScreenPage from './src/pages/Splashscreen';
 import MovieDetailsPage from './src/pages/MovieDetails';
 import MoviesSearchPage from './src/pages/MoviesSearch';
 import { Movie } from './src/api/types/movie';
+import NavigationHeader from './src/components/NavigationHeader';
 import { StatusBar } from 'react-native';
+import { UserProvider } from './src/providers/UserProvider';
 
 export type TabsParamList = {
   HomeTabs: undefined;
@@ -97,39 +99,40 @@ export default function App() {
   }
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={Theme}>
-        <NavigationContainer>
+      <UserProvider>
+        <ThemeProvider theme={Theme}>
+          <NavigationContainer>
             <StatusBar barStyle="light-content" />
-          <Stack.Navigator
-            initialRouteName="Splashscreen"
-            screenOptions={{ headerShown: false }}
-          >
-            <Stack.Screen name="Splashscreen" component={SplashScreenPage} />
-            <Stack.Screen name="HomeTabs" component={HomeTabs} />
-            <Stack.Screen
-              name="MovieDetails"
-              component={MovieDetailsPage}
-              options={({ route, navigation }) => ({
-                title: route.params.movie.title,
-                headerShown: true,
-                headerStyle: {
-                  backgroundColor: Theme.backgroundColor,
-                },
-                headerTitleStyle: {
-                  color: '#FFF',
-                },
-                // headerLeft: () => {
-                //   return (
-                //     <TouchableOpacity onPress={navigation.goBack()}>
-                //       <Ionicons name="arrow-back" size={25} color="#FFF" />
-                //     </TouchableOpacity>
-                //   );
-                // },
-              })}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ThemeProvider>
+            <Stack.Navigator
+              initialRouteName="Splashscreen"
+              screenOptions={{ headerShown: false }}
+            >
+              <Stack.Screen name="Splashscreen" component={SplashScreenPage} />
+              <Stack.Screen name="HomeTabs" component={HomeTabs} />
+              <Stack.Screen
+                name="MovieDetails"
+                component={MovieDetailsPage}
+                options={({ route, navigation }) => ({
+                  title: route.params.movie.title,
+                  headerShown: true,
+                  headerStyle: {
+                    backgroundColor: Theme.backgroundColor,
+                  },
+                  headerTitleStyle: {
+                    color: '#FFF',
+                  },
+                  header: (props) => (
+                    <NavigationHeader
+                      {...props}
+                      title={route.params.movie.title}
+                    />
+                  ),
+                })}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ThemeProvider>
+      </UserProvider>
     </QueryClientProvider>
   );
 }
