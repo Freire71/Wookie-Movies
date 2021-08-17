@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Movie } from '../api/types/movie';
+import { testID } from '../utils/Tests';
 
 interface IFavoriteMovieListItemProps {
   movie: Movie;
@@ -16,7 +17,7 @@ const Container = styled.View`
 
 const MovieTitle = styled.Text<{ length: number }>`
   color: #fff;
-  font-size: ${(props) => (props.length > 25 ? 18 : 18)}px;
+  font-size: 18px;
   font-family: ${(props) => props.theme.fonts.Barlow_600SemiBold};
   margin-left: 6px;
   margin-bottom: 2px;
@@ -38,8 +39,12 @@ const FavoriteMoviesListItem = ({
 }: IFavoriteMovieListItemProps) => {
   const { title } = movie;
   return (
-    <TouchableContainer onPress={() => onMoviePress(movie)}>
+    <TouchableContainer
+      onPress={() => onMoviePress(movie)}
+      {...testID('favorite-movies-list-item-container')}
+    >
       <Image
+        {...testID('favorite-movies-list-item-image')}
         source={{ uri: movie.backdrop }}
         imageStyle={{ resizeMode: 'cover' }}
       >
