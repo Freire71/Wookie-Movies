@@ -24,11 +24,11 @@ const movie = {
 
 describe('<MovieCard />', () => {
   it('should render component properly', () => {
-    const onMovieClickFn = jest.fn();
+    const onMoviePressFn = jest.fn();
     const { getByA11yHint, getByTestId } = render(
       <MovieCard
         movie={movie}
-        onMovieClick={onMovieClickFn}
+        onMoviePress={onMoviePressFn}
         testID="card-container"
       />
     );
@@ -36,9 +36,9 @@ describe('<MovieCard />', () => {
     const cardContainer = getByTestId('card-container');
 
     fireEvent(cardContainer, 'onPress');
-    expect(onMovieClickFn).toHaveBeenCalled();
-    expect(onMovieClickFn).toHaveBeenCalledTimes(1);
-    expect(onMovieClickFn).toHaveBeenCalledWith(movie);
+    expect(onMoviePressFn).toHaveBeenCalled();
+    expect(onMoviePressFn).toHaveBeenCalledTimes(1);
+    expect(onMoviePressFn).toHaveBeenCalledWith(movie);
     expect(image).toHaveProp('source', { uri: movie.poster });
   });
 });

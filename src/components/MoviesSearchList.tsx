@@ -6,7 +6,7 @@ import MovieCard from './MovieCard';
 
 interface IMoviesSearchListProps {
   data: Movie[];
-  onMovieClick: (movie: Movie) => void;
+  onMoviePress: (movie: Movie) => void;
   failedToFech: boolean;
   isFetching: boolean;
 }
@@ -51,7 +51,7 @@ const ERROR_MESSAGE = 'Ops... Something went wrong. Please try again later';
 
 const MoviesSearchList = ({
   data,
-  onMovieClick,
+  onMoviePress,
   failedToFech,
   isFetching,
 }: IMoviesSearchListProps) => {
@@ -60,7 +60,7 @@ const MoviesSearchList = ({
   const renderItem = ({ item, index }: ListRenderItemInfo<Movie>) => {
     return (
       <View style={[index % 2 == 0 ? { marginRight: 5 } : { marginLeft: 5 }]}>
-        <MovieCard movie={item} onMovieClick={onMovieClick} />
+        <MovieCard movie={item} onMoviePress={onMoviePress} />
       </View>
     );
   };

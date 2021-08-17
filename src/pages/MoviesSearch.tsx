@@ -38,7 +38,7 @@ const MoviesSearch = ({ navigation }: IProps) => {
     refetch();
   }, [movieToSearch]);
 
-  const onMovieClick = (movie: Movie) => {
+  const onMoviePress = (movie: Movie) => {
     navigation.navigate('MovieDetails', { movie });
   };
 
@@ -51,7 +51,7 @@ const MoviesSearch = ({ navigation }: IProps) => {
       <MoviesSearchInput onSearch={onSearch} isFetching={isFetching} />
       <MoviesSearchList
         data={moviesFound}
-        onMovieClick={onMovieClick}
+        onMoviePress={onMoviePress}
         failedToFech={!!error}
         isFetching={isFetching}
       />

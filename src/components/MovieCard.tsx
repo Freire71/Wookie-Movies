@@ -21,14 +21,14 @@ export const hints = {
 };
 
 interface IMovieCardProps {
-  onMovieClick: (movie: Movie) => void;
+  onMoviePress: (movie: Movie) => void;
   movie: Movie;
   testID?: string;
 }
 
-export const MovieCard = ({ movie, testID, onMovieClick }: IMovieCardProps) => {
+export const MovieCard = ({ movie, testID, onMoviePress }: IMovieCardProps) => {
   return (
-    <Container testID={testID} onPress={() => onMovieClick(movie)}>
+    <Container testID={testID} onPress={() => onMoviePress(movie)}>
       <Image
         accessibilityHint={hints.cardImage}
         source={{

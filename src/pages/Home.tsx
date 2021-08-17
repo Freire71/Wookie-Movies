@@ -52,7 +52,7 @@ const Home = ({ navigation }: IProps) => {
     }
   }, [data, isLoading]);
 
-  const onMovieClick = (movie: Movie) => {
+  const onMoviePress = (movie: Movie) => {
     navigation.navigate('MovieDetails', { movie });
   };
 
@@ -65,7 +65,7 @@ const Home = ({ navigation }: IProps) => {
       <MoviesCarousel
         data={item.data}
         genreTitle={item.genreTitle}
-        onMovieClick={onMovieClick}
+        onMoviePress={onMoviePress}
       />
     );
   };

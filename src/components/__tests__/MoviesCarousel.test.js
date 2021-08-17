@@ -118,12 +118,12 @@ const carouselData = {
 };
 describe('<MoviesCarousel />', () => {
   it('should render correctly', () => {
-    const onMovieClickFn = jest.fn();
+    const onMoviePressFn = jest.fn();
     const { getAllByTestId, getByText } = render(
       <MoviesCarousel
         data={carouselData.data}
         genreTitle={carouselData.genreTitle}
-        onMovieClick={onMovieClickFn}
+        onMoviePress={onMoviePressFn}
       />
     );
     const genreTitle = getByText(carouselData.genreTitle);

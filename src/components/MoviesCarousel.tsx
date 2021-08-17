@@ -25,20 +25,20 @@ const Divider = styled.View`
 export interface IMoviesCarouselProps {
   genreTitle: string;
   data: Movie[];
-  onMovieClick: (movie: Movie) => void;
+  onMoviePress: (movie: Movie) => void;
 }
 
 const MoviesCarousel = ({
   data,
   genreTitle,
-  onMovieClick,
+  onMoviePress,
 }: IMoviesCarouselProps) => {
   const keyExtractor = (item: Movie, index: number) => `${item.id}/${index}`;
   const renderItem = ({ item, index }: ListRenderItemInfo<Movie>) => {
     return (
       <MovieCard
         movie={item}
-        onMovieClick={onMovieClick}
+        onMoviePress={onMoviePress}
         {...testID(`movie-card`)}
       />
     );
