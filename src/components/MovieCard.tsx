@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Movie } from '../api/types/movie';
+import { testID } from '../utils/Tests';
 
 const Image = styled.Image`
   width: 175px;
@@ -26,10 +27,15 @@ interface IMovieCardProps {
   testID?: string;
 }
 
-export const MovieCard = ({ movie, testID, onMoviePress }: IMovieCardProps) => {
+export const MovieCard = ({
+  movie,
+  testID: propTestID,
+  onMoviePress,
+}: IMovieCardProps) => {
   return (
-    <Container testID={testID} onPress={() => onMoviePress(movie)}>
+    <Container testID={propTestID} onPress={() => onMoviePress(movie)}>
       <Image
+        {...testID('movie-card-image')}
         accessibilityHint={hints.cardImage}
         source={{
           uri: movie.poster,
