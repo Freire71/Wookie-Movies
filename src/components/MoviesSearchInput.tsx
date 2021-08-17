@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { testID } from '../utils/Tests';
 
 interface IMoviesSearchInputProps {
   onSearch: (value: string) => void;
@@ -51,9 +52,10 @@ const MoviesSearchInput = ({
     onSearch(inputValue);
   };
   return (
-    <MoviesSearchInputContainer>
+    <MoviesSearchInputContainer {...testID('movies-search-input-container')}>
       <Ionicons size={22} color="#FFF" name="search" />
       <TextInput
+        {...testID('movies-search-text-input')}
         placeholderTextColor="#8a8ea8"
         placeholder="Search for your favorite movie here 😊"
         value={inputValue}
@@ -67,9 +69,14 @@ const MoviesSearchInput = ({
         maxLength={50}
       />
       {isFetching ? (
-        <ActivityIndicator size="small" color="#FFF" />
+        <ActivityIndicator
+          {...testID('movies-search-activity-indicator')}
+          size="small"
+          color="#FFF"
+        />
       ) : (
         <ClearButton
+          {...testID('movies-search-clear-button')}
           style={{ display: showClearButton }}
           onPress={() => setInputValue('')}
         >
