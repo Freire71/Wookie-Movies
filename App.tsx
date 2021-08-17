@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { ThemeProvider } from 'styled-components/native';
 import AppLoading from 'expo-app-loading';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { StatusBar } from 'react-native';
 
 import {
   useFonts,
@@ -25,9 +26,9 @@ import HomePage from './src/pages/Home';
 import SplashScreenPage from './src/pages/Splashscreen';
 import MovieDetailsPage from './src/pages/MovieDetails';
 import MoviesSearchPage from './src/pages/MoviesSearch';
+import FavoriteMoviesPage from './src/pages/FavoriteMovies';
 import { Movie } from './src/api/types/movie';
 import NavigationHeader from './src/components/NavigationHeader';
-import { StatusBar } from 'react-native';
 import { UserProvider } from './src/providers/UserProvider';
 
 export type TabsParamList = {
@@ -35,6 +36,7 @@ export type TabsParamList = {
   Home: undefined;
   Splashscreen: undefined;
   MoviesSearch: undefined;
+  FavoriteMovies: undefined;
 };
 
 export type StackParamsList = {
@@ -48,6 +50,8 @@ const routeIcons = {
   HomeFocused: 'home',
   MoviesSearch: 'search-outline',
   MoviesSearchFocused: 'search',
+  FavoriteMovies: 'heart-outline',
+  FavoriteMoviesFocused: 'heart',
 };
 
 const Tab = createBottomTabNavigator<ParamsList>();
@@ -78,6 +82,7 @@ const HomeTabs = () => {
     >
       <Tab.Screen name="Home" component={HomePage} />
       <Tab.Screen name="MoviesSearch" component={MoviesSearchPage} />
+      <Tab.Screen name="FavoriteMovies" component={FavoriteMoviesPage} />
     </Tab.Navigator>
   );
 };
