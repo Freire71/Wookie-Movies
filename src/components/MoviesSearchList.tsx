@@ -1,7 +1,8 @@
 import React from 'react';
 import { FlatList, ListRenderItemInfo, View } from 'react-native';
-import styled from 'styled-components/native';
+
 import { Movie } from '../api/types/movie';
+import ListMessage from './ListMessage';
 import MovieCard from './MovieCard';
 
 interface IMoviesSearchListProps {
@@ -10,39 +11,6 @@ interface IMoviesSearchListProps {
   failedToFech: boolean;
   isFetching: boolean;
 }
-
-const ListMessageContainer = styled.View`
-  margin-top: 12px;
-  padding-horizontal: 12px;
-`;
-const ListMessageTitle = styled.Text`
-  text-align: center;
-  color: #fff;
-  font-family: ${(props) => props.theme.fonts.Barlow_600SemiBold};
-  font-size: 26px;
-`;
-const ListMessageSubtitle = styled.Text`
-  margin-top: 8px;
-  text-align: center;
-  color: #8a8ea8;
-  font-size: 18px;
-  font-family: ${(props) => props.theme.fonts.Barlow_500Medium};
-`;
-
-const ListMessage = ({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle?: string;
-}) => {
-  return (
-    <ListMessageContainer>
-      <ListMessageTitle>{title}</ListMessageTitle>
-      {subtitle && <ListMessageSubtitle>{subtitle}</ListMessageSubtitle>}
-    </ListMessageContainer>
-  );
-};
 
 const EMPTY_LIST_MESSAGE_TITLE = "Unfortunately we don't have this movie 😢";
 const EMPTY_LIST_MESSAGE_SUBTITLE =
