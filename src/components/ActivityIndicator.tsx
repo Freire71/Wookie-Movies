@@ -4,6 +4,7 @@ import {
   responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
 import styled from 'styled-components/native';
+import { testID } from '../utils/Tests';
 
 export const Container = styled.View`
   flex: 1;
@@ -27,13 +28,9 @@ const Spinner = styled.ActivityIndicator.attrs({
   color: '#2b2c33',
 })``;
 
-export const testIDs = {
-  container: 'activity-indicator-container',
-};
-
 function ActivityIndicator() {
   return (
-    <Container testID={testIDs.container}>
+    <Container {...testID('activity-indicator-container')}>
       <Content>
         <Spinner />
       </Content>
