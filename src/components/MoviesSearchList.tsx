@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, ListRenderItemInfo, View } from 'react-native';
 
 import { Movie } from '../api/types/movie';
+import { testID } from '../utils/Tests';
 import ListMessage from './ListMessage';
 import MovieCard from './MovieCard';
 
@@ -12,10 +13,12 @@ interface IMoviesSearchListProps {
   isFetching: boolean;
 }
 
-const EMPTY_LIST_MESSAGE_TITLE = "Unfortunately we don't have this movie 😢";
-const EMPTY_LIST_MESSAGE_SUBTITLE =
+export const EMPTY_LIST_MESSAGE_TITLE =
+  "Unfortunately we don't have this movie 😢";
+export const EMPTY_LIST_MESSAGE_SUBTITLE =
   'Try a different movie name or enjoy the movies available on our home page';
-const ERROR_MESSAGE = 'Ops... Something went wrong. Please try again later';
+export const ERROR_MESSAGE =
+  'Ops... Something went wrong. Please try again later';
 
 const MoviesSearchList = ({
   data,
@@ -28,7 +31,11 @@ const MoviesSearchList = ({
   const renderItem = ({ item, index }: ListRenderItemInfo<Movie>) => {
     return (
       <View style={[index % 2 == 0 ? { marginRight: 5 } : { marginLeft: 5 }]}>
-        <MovieCard movie={item} onMoviePress={onMoviePress} />
+        <MovieCard
+          movie={item}
+          onMoviePress={onMoviePress}
+          {...testID('movies-search-list-item')}
+        />
       </View>
     );
   };
