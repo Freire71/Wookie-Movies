@@ -10,6 +10,7 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
+import { useUserContext } from '../providers/UserProvider';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -42,6 +43,8 @@ export const Title = styled.Text`
 interface IProps extends BottomTabScreenProps<TabsParamList, 'Home'> {}
 
 const SplashScreen = ({ navigation }: IProps) => {
+  const { loadUserFavorites } = useUserContext();
+  loadUserFavorites();
   const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
