@@ -50,8 +50,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "node_modules/.bin/jest",
-    "test:watch": "node_modules/.bin/jest --watch"
+    "test": "node_modules/.bin/jest --detectOpenHandles",
+    "test:watch": "node_modules/.bin/jest --watch --detectOpenHandles"
   },
   "private": true
 }
