@@ -8,8 +8,6 @@ import { Movie } from '../api/types/movie';
 import { getMovies } from '../api/hooks/movies';
 import ActivityIndicator from '../components/ActivityIndicator';
 
-interface IProps extends BottomTabScreenProps<ParamsList, 'Home'> {}
-
 export interface ICarouselData {
   genreTitle: string;
   data: Movie[];
@@ -41,6 +39,8 @@ const formatMoviesPayload = (movies: Movie[]) => {
   });
   return formatedData;
 };
+
+interface IProps extends BottomTabScreenProps<ParamsList, 'Home'> {}
 
 const Home = ({ navigation }: IProps) => {
   const [movies, setMovies] = useState<Movie[] | []>([]);
