@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "MoviesApp",
+    "name": "Wookie Movies",
     "version": "1.0.0",
     "slug": "movies-app",
     "ios": {
-      "bundleIdentifier": "com.alexfreirespinola.moviesapp",
+      "bundleIdentifier": "com.alexfreirespinola.wookiemovies",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.alexfreirespinola.moviesapp",
+      "package": "com.alexfreirespinola.wookiemovies",
       "versionCode": 1
     }
   }
