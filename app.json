@@ -3,6 +3,10 @@
     "name": "Wookie Movies",
     "version": "1.0.0",
     "slug": "movies-app",
+    "icon": "./src/assets/clapperboard-red-bg.png",
+    "splash": {
+      "backgroundColor": "#1c1c26"
+    },
     "ios": {
       "bundleIdentifier": "com.alexfreirespinola.wookiemovies",
       "buildNumber": "1.0.0"
