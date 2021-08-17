@@ -19,11 +19,11 @@ interface INavigationHeaderProps extends NativeStackScreenProps<ParamsList> {
 const SafeAreView = styled.SafeAreaView`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
-const Title = styled.Text`
+const Title = styled.Text<{ length: number }>`
   text-align: center;
   color: #fff;
   font-family: ${(props) => props.theme.fonts.Barlow_600SemiBold};
-  font-size: 22px;
+  font-size: ${(props) => (props.length > 25 ? 18 : 22)}px;
 `;
 
 const Container = styled.View`
@@ -66,7 +66,7 @@ const NavigationHeader = ({
         <IconBtn onPress={() => navigation.goBack()}>
           <Ionicons size={30} name="chevron-back" color="#FFF" />
         </IconBtn>
-        <Title ellipsizeMode="tail">{title}</Title>
+        <Title length={movie.title.length}>{title}</Title>
         <IconBtn onPress={() => movieAction(movie)}>
           <Ionicons
             size={30}
