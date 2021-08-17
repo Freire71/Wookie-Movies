@@ -10,6 +10,7 @@ interface IUserProvider {
     heartColor: string;
   };
   favoriteMoviesMap: Map<string, Movie>;
+  getFavoriteMoviesList: () => Movie[];
 }
 
 const UserContext = React.createContext<IUserProvider | null>(null);
@@ -65,9 +66,15 @@ const UserProvider = ({ children }: { children: React.ReactChild }) => {
       heartIcon,
     };
   };
+
+  const getFavoriteMoviesList = () => {
+    return [...favoriteMoviesMap.values()];
+  };
+
   return (
     <UserContext.Provider
       value={{
+        getFavoriteMoviesList,
         getMovieHeaderData,
         favoriteMoviesMap,
       }}
