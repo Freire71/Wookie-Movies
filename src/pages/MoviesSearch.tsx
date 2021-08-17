@@ -9,13 +9,13 @@ import { getMoviesSearch } from '../api/hooks/movies';
 import MoviesSearchInput from '../components/MoviesSearchInput';
 import MoviesSearchList from '../components/MoviesSearchList';
 
-interface IProps extends BottomTabScreenProps<ParamsList, 'MoviesSearch'> {}
-
 const Container = styled.SafeAreaView`
   background-color: #1c1c26;
   flex: 1;
   padding-top: 6px;
 `;
+
+interface IProps extends BottomTabScreenProps<ParamsList, 'MoviesSearch'> {}
 
 const MoviesSearch = ({ navigation }: IProps) => {
   const [movieToSearch, setMovieToSearch] = useState('');
