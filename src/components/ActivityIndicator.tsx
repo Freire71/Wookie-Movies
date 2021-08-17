@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  responsiveScreenHeight,
-  responsiveScreenWidth,
-} from 'react-native-responsive-dimensions';
+import { responsiveScreenWidth } from 'react-native-responsive-dimensions';
 import styled from 'styled-components/native';
 import { testID } from '../utils/Tests';
 
