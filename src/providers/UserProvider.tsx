@@ -11,6 +11,7 @@ interface IUserProvider {
   };
   favoriteMoviesMap: Map<string, Movie>;
   getFavoriteMoviesList: () => Movie[];
+  loadUserFavorites: () => Promise<void>;
 }
 
 const UserContext = React.createContext<IUserProvider | null>(null);
@@ -18,23 +19,20 @@ const UserContext = React.createContext<IUserProvider | null>(null);
 const UserProvider = ({ children }: { children: React.ReactChild }) => {
   const [favoriteMoviesMap, setFavoriteMoviesMap] = useState(new Map());
 
-  useEffect(() => {
-    const mountUserFavorites = async () => {
-      const allFavoritedMoviesKeys = await AsyncStorage.getAllKeys();
-      if (allFavoritedMoviesKeys.length > 0) {
-        const moviesKeyAndValueArray = await AsyncStorage.multiGet(
-          allFavoritedMoviesKeys
-        );
-        const userFavoritesMovies = new Map();
-        moviesKeyAndValueArray.forEach((movieKeyAndValue) => {
-          const movie = JSON.parse(movieKeyAndValue[1]);
-          userFavoritesMovies.set(movieKeyAndValue[0], movie);
-        });
-        setFavoriteMoviesMap(userFavoritesMovies);
-      }
-    };
-    mountUserFavorites();
-  }, []);
+  const loadUserFavorites = async () => {
+    const allFavoritedMoviesKeys = await AsyncStorage.getAllKeys();
+    if (allFavoritedMoviesKeys.length > 0) {
+      const moviesKeyAndValueArray = await AsyncStorage.multiGet(
+        allFavoritedMoviesKeys
+      );
+      const userFavoritesMovies = new Map();
+      moviesKeyAndValueArray.forEach((movieKeyAndValue) => {
+        const movie = JSON.parse(movieKeyAndValue[1]);
+        userFavoritesMovies.set(movieKeyAndValue[0], movie);
+      });
+      setFavoriteMoviesMap(userFavoritesMovies);
+    }
+  };
 
   const addToFavorites = (movie: Movie) => {
     setFavoriteMoviesMap(new Map([...favoriteMoviesMap, [movie.id, movie]]));
@@ -42,7 +40,6 @@ const UserProvider = ({ children }: { children: React.ReactChild }) => {
   };
 
   const removeFromFavorites = (movie: Movie) => {
-    favoriteMoviesMap.delete(movie.id);
     setFavoriteMoviesMap((prevState) => {
       const newMap = new Map(prevState);
       newMap.delete(movie.id);
@@ -77,6 +74,7 @@ const UserProvider = ({ children }: { children: React.ReactChild }) => {
         getFavoriteMoviesList,
         getMovieHeaderData,
         favoriteMoviesMap,
+        loadUserFavorites,
       }}
     >
       {children}
