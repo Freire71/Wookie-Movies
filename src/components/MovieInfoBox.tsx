@@ -6,7 +6,8 @@ import { testID } from '../utils/Tests';
 const InfoBoxContainer = styled.View`
   padding: 16px;
   border: 1.5px solid ${(props) => props.theme.lightGrey};
-  width: 125px;
+  min-width: 125px;
+  max-width: 160px;
   border-radius: 10px;
   flex: 1;
   align-items: center;
@@ -83,7 +84,9 @@ const MovieInfoBox = ({ data, type }: IMovieInfoBox) => {
     <InfoBoxContainer {...testID(`movie-info-${type}`)}>
       {icon}
       <InfoBoxTypeTitle>{propertyMap[type]}</InfoBoxTypeTitle>
-      <InfoBoxValue>{dataToShow}</InfoBoxValue>
+      <InfoBoxValue numberOfLines={3} ellipsizeMode="tail">
+        {dataToShow}
+      </InfoBoxValue>
     </InfoBoxContainer>
   );
 };
