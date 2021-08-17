@@ -3,13 +3,14 @@ import React, { useRef, useEffect } from 'react';
 import LottieAnimation from 'lottie-react-native';
 import { Animated } from 'react-native';
 import styled from 'styled-components/native';
-import { TabsParamList } from '../../App';
-import movieAnimation from '../assets/clapperboard.json';
 import {
   responsiveFontSize,
   responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
+
+import { TabsParamList } from '../../App';
+import movieAnimation from '../assets/clapperboard.json';
 import { useUserContext } from '../providers/UserProvider';
 
 export const Container = styled.SafeAreaView`
