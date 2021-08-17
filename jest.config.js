@@ -8,5 +8,6 @@ module.exports = {
     './src/config/jestSetup.js',
     '@testing-library/jest-native/extend-expect',
   ],
+  collectCoverageFrom: ['./src/**/*.{ts,js,tsx}'],
   testMatch: ['**/__tests__/?(*.)+(test).js'],
 };

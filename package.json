@@ -51,7 +51,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "node_modules/.bin/jest --detectOpenHandles",
-    "test:watch": "node_modules/.bin/jest --watch --detectOpenHandles"
+    "test:watch": "node_modules/.bin/jest --watch --detectOpenHandles",
+    "test:coverage": "node_modules/.bin/jest --detectOpenHandles --coverage"
   },
   "private": true
 }
