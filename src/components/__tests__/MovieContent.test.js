@@ -1,5 +1,5 @@
-import 'react-native';
 import React from 'react';
+import 'react-native';
 import { render } from '../../utils/Tests';
 import MovieContent from '../MovieContent';
 
