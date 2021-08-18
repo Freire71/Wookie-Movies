@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
 import { responsiveWidth } from 'react-native-responsive-dimensions';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -9,8 +9,13 @@ import MovieStars from '../components/MovieStars';
 import MovieContent from '../components/MovieContent';
 import { Movie } from '../api/types/movie';
 import { ParamsList } from '../../App';
+import { testID } from '../utils/Tests';
 
 const Container = styled.ScrollView`
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+const ContentContainer = styled.ScrollView`
   padding: 16px;
   margin-top: ${responsiveWidth(25)}px;
 `;
@@ -73,11 +78,17 @@ export const MovieDetails = ({ route }: IMovieDetailsProps) => {
     titleFontSize = responsiveWidth(5);
   }
   return (
-    <ScrollView style={{ backgroundColor: '#1c1c26' }}>
+    <Container>
       <SafeAreaView>
-        <MovieBackdrop source={{ uri: movie.backdrop }} />
+        <MovieBackdrop
+          source={{ uri: movie.backdrop }}
+          {...testID('movie-details-backdrop')}
+        />
         <View style={{ position: 'absolute' }}>
-          <Image source={{ uri: movie.poster }} />
+          <Image
+            source={{ uri: movie.poster }}
+            {...testID('movie-details-poster')}
+          />
           <View>
             <MovieTitle fontSize={titleFontSize}>
               {movieTitleWithRating}
@@ -87,7 +98,7 @@ export const MovieDetails = ({ route }: IMovieDetailsProps) => {
             </StarsContainer>
           </View>
         </View>
-        <Container>
+        <ContentContainer>
           <MovieInfoCarousel
             director={movie.director}
             releaseYear={movie.released_on}
@@ -96,9 +107,9 @@ export const MovieDetails = ({ route }: IMovieDetailsProps) => {
           />
           <Divider />
           <MovieContent cast={movie.cast} synopse={movie.overview} />
-        </Container>
+        </ContentContainer>
       </SafeAreaView>
-    </ScrollView>
+    </Container>
   );
 };
 
