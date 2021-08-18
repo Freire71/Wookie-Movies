@@ -41,6 +41,8 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest-expo": "^42.1.0",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.2.0",
     "react-test-renderer": "^17.0.2",
     "typescript": "~4.0.0"
   },
@@ -52,7 +54,8 @@
     "eject": "expo eject",
     "test": "node_modules/.bin/jest --detectOpenHandles",
     "test:watch": "node_modules/.bin/jest --watch --detectOpenHandles",
-    "test:coverage": "node_modules/.bin/jest --detectOpenHandles --coverage"
+    "test:coverage": "node_modules/.bin/jest --detectOpenHandles --coverage",
+    "jest:clear-cache": "node_modules/.bin/jest --clearCache"
   },
   "private": true
 }
