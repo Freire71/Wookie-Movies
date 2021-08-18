@@ -21,21 +21,23 @@ const MoviesSearch = ({ navigation }: IProps) => {
   const [movieToSearch, setMovieToSearch] = useState('');
   const [moviesFound, setMoviesFound] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
-  const { refetch, data, error, isLoading } = getMoviesSearch(movieToSearch);
+  const { refetch, data, isError, isLoading } = getMoviesSearch(movieToSearch);
 
   useEffect(() => {
-    if (!isLoading && !error && data) {
+    if (!isLoading && !isError && data) {
       setIsFetching(false);
       setMoviesFound(data.data.movies);
     }
-    if (error) {
+    if (isError) {
       setIsFetching(false);
     }
-  }, [data, isLoading, error]);
+  }, [isLoading, isError]);
 
   useEffect(() => {
-    setIsFetching(true);
-    refetch();
+    if (movieToSearch.length > 0) {
+      setIsFetching(true);
+      refetch();
+    }
   }, [movieToSearch]);
 
   const onMoviePress = (movie: Movie) => {
@@ -45,14 +47,13 @@ const MoviesSearch = ({ navigation }: IProps) => {
   const onSearch = (movieName: string) => {
     setMovieToSearch(movieName);
   };
-
   return (
     <Container>
       <MoviesSearchInput onSearch={onSearch} isFetching={isFetching} />
       <MoviesSearchList
         data={moviesFound}
         onMoviePress={onMoviePress}
-        failedToFech={!!error}
+        failedToFech={isError}
         isFetching={isFetching}
       />
     </Container>
