@@ -7,6 +7,7 @@ import styled from 'styled-components/native';
 import { Movie } from '../api/types/movie';
 import { getMovies } from '../api/hooks/movies';
 import ActivityIndicator from '../components/ActivityIndicator';
+import ListMessage from '../components/ListMessage';
 
 export interface ICarouselData {
   genreTitle: string;
@@ -44,13 +45,13 @@ interface IProps extends BottomTabScreenProps<ParamsList, 'Home'> {}
 
 const Home = ({ navigation }: IProps) => {
   const [movies, setMovies] = useState<Movie[] | []>([]);
-  const { data, error, isLoading } = getMovies();
+  const { data, isError, isLoading } = getMovies();
 
   useEffect(() => {
-    if (!error && !isLoading && data) {
+    if (!isError && !isLoading && data) {
       setMovies(formatMoviesPayload(data.data.movies));
     }
-  }, [data, isLoading]);
+  }, [isLoading, isError]);
 
   const onMoviePress = (movie: Movie) => {
     navigation.navigate('MovieDetails', { movie });
@@ -72,6 +73,12 @@ const Home = ({ navigation }: IProps) => {
 
   if (isLoading) {
     return <ActivityIndicator />;
+  }
+
+  if (isError) {
+    return (
+      <ListMessage title="Ops... Something went wrong. Please try again later." />
+    );
   }
 
   return (
