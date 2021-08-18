@@ -47,6 +47,7 @@ const MoviesCarousel = ({
     <Container>
       <GenreTitle>{genreTitle}</GenreTitle>
       <FlatList
+        {...testID(`${genreTitle}-carousel`)}
         keyExtractor={keyExtractor}
         data={data}
         renderItem={renderItem}
