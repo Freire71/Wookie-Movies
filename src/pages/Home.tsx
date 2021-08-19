@@ -99,8 +99,6 @@ const Home = ({ navigation }: IProps) => {
         data={movies}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
-        // style={{ paddingTop: 12 }}
-        // contentContainerStyle={{ paddingTop: 12, marginTop: 12 }}
       />
     </Container>
   );
