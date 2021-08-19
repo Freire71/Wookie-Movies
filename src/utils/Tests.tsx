@@ -34,6 +34,21 @@ export function renderWithThemeAndReactQueryProvider({
   );
 }
 
+export function reactQueryWrapper({ children }: { children: React.ReactNode }) {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  setLogger({
+    log: console.log,
+    warn: console.warn,
+    error: () => {},
+  });
+
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+}
+
 const customRender = (ui: any) => render(ui, { wrapper: renderWithProvider });
 
 const pageRender = (ui: any) =>
