@@ -35,7 +35,7 @@ export const FavoriteMovies = ({ navigation }: IProps) => {
 
   useEffect(() => {
     setFavoriteMoviesList(getFavoriteMoviesList());
-  }, [favoriteMoviesMap]);
+  }, [favoriteMoviesMap.size]);
 
   const onMoviePress = (movie: Movie) => {
     navigation.navigate('MovieDetails', { movie });
