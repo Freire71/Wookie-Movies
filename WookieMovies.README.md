@@ -3,18 +3,34 @@ The Wookie Movies app is a mobile application to help movies affectionate to sta
 It also helps users to search for their favorite movies. They can also mark movies as favorites and they will be displayed in the favorites section.
 
 ## Screenshots
+<p>
+  <img src="./samples/screenshots/splash.png"  width="200">
+  <img src="./samples/screenshots/home.png"  width="200">
+  <img src="./samples/screenshots/movie-details.png"  width="200">
+  <img src="./samples/screenshots/search-page.png"  width="200">
+  <img src="./samples/screenshots/favorites.png"  width="200">
+</p>
 
 ## Local development
 - Run `yarn` to install projects dependencies. It is also recommended to install `expo-cli` you can do this by running `yarn global expo-cli`
 - To start the development server run `yarn start`. 
 - Press `i` to open the app in an iOS simulator or `a` to open it in an Android simulator
+- This project was developed with the following device simulators: 
+  - Iphone SE
+  - Iphone 12 Pro Max
+  - Iphone 11
+  - Google Pixel 2
 
 ## Testing 
 - Application testing is written using `@testing-library/react-native` and the test runner is `jest`
-- To extend jest rules was used `@testing-library/jest-native`
-- To run all tests `yarn test`
-- To run jest in watch mode (recommended for development) `yarn test:watch`
-- To get code coverage `yarn test:coverage`
+- To extend jest rules `@testing-library/jest-native` was used 
+- To test network layer `msw` was used 
+- To run all tests: `yarn test` 
+- To run jest in watch mode (recommended for development): `yarn test:watch`
+- To get code coverage: `yarn test:coverage`. This project has test coverage above 90%
+<p>
+  <img src="./samples/screenshots/coverage.png"  width="500">
+</p>
 
 ## Main Technologies
 - Expo
