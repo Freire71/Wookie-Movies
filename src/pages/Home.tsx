@@ -55,7 +55,7 @@ const formatMoviesPayload = (movies: Movie[]) => {
 interface IProps extends BottomTabScreenProps<ParamsList, 'Home'> {}
 
 const Home = ({ navigation }: IProps) => {
-  const [movies, setMovies] = useState<Movie[] | []>([]);
+  const [movies, setMovies] = useState<ICarouselData[] | []>([]);
   const { data, isError, isLoading } = getMovies();
 
   useEffect(() => {
@@ -71,8 +71,7 @@ const Home = ({ navigation }: IProps) => {
   const keyExtractor = (item: ICarouselData, index: number) =>
     `${item.genreTitle}/${index}`;
 
-  //TODO: add correct type
-  const renderItem = ({ item }: ListRenderItemInfo<any>) => {
+  const renderItem = ({ item }: ListRenderItemInfo<ICarouselData>) => {
     return (
       <MoviesCarousel
         data={item.data}
