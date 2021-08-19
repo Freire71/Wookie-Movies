@@ -8,6 +8,7 @@ import { Movie } from '../api/types/movie';
 import { getMovies } from '../api/hooks/movies';
 import ActivityIndicator from '../components/ActivityIndicator';
 import ListMessage from '../components/ListMessage';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 export interface ICarouselData {
   genreTitle: string;
@@ -18,6 +19,16 @@ const Container = styled.SafeAreaView`
   background-color: #1c1c26;
   flex: 1;
   padding-top: 6px;
+`;
+
+export const Title = styled.Text`
+  font-family: ${(props) => props.theme.fonts.Barlow_700Bold};
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: ${responsiveFontSize(3.25)}px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 12px;
 `;
 
 const formatMoviesPayload = (movies: Movie[]) => {
@@ -84,9 +95,12 @@ const Home = ({ navigation }: IProps) => {
   return (
     <Container>
       <FlatList
+        ListHeaderComponent={() => <Title>Wookie Movies</Title>}
         data={movies}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
+        // style={{ paddingTop: 12 }}
+        // contentContainerStyle={{ paddingTop: 12, marginTop: 12 }}
       />
     </Container>
   );
