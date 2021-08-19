@@ -27,6 +27,7 @@ describe('<HomePage />', () => {
     const images = getAllByTestId('movie-card-image');
 
     expect(images).toBeDefined();
+    expect(getByText('Wookie Movies')).toBeDefined();
     expect(getByText('Action')).toBeDefined();
     expect(getByText('Crime')).toBeDefined();
     expect(getByText('Drama')).toBeDefined();
