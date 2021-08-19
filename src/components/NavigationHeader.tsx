@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
-import { ParamsList } from '../../App';
+import { StackParamsList } from '../../App';
 import { useUserContext } from '../providers/UserProvider';
 
 export interface PageHeaderAction {
@@ -11,7 +11,8 @@ export interface PageHeaderAction {
   onPress: () => void;
 }
 
-interface INavigationHeaderProps extends NativeStackScreenProps<ParamsList> {
+interface INavigationHeaderProps
+  extends NativeStackScreenProps<StackParamsList, 'MovieDetails'> {
   navigation: any;
   title: string;
 }
@@ -43,7 +44,7 @@ const NavigationHeader = ({
   title,
 }: INavigationHeaderProps) => {
   const { getMovieHeaderData, favoriteMoviesMap } = useUserContext();
-  const movie = (route.params as any).movie;
+  const { movie } = route.params;
   let movieAction;
   let movieHeartColor;
   let movieHeartIcon;
