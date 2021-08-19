@@ -13,11 +13,7 @@ export const getMovies = () => {
 };
 
 export const getMoviesSearch = (movieName: string) => {
-  return useQuery(
-    ['moviesSearch', movieName],
-    () => {
-      return get<MoviesPayload>(`/movies?q=${movieName}`);
-    },
-    { enabled: false }
-  );
+  return useQuery(['moviesSearch', movieName], () => {
+    return get<MoviesPayload>(`/movies?q=${movieName}`);
+  });
 };
