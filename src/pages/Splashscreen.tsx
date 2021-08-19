@@ -39,6 +39,7 @@ export const Title = styled.Text`
   margin-bottom: 12px;
   color: #fff;
   font-size: ${responsiveFontSize(4)}px;
+  text-transform: uppercase;
 `;
 
 interface IProps extends BottomTabScreenProps<TabsParamList, 'Home'> {}
@@ -69,7 +70,7 @@ const SplashScreen = ({ navigation }: IProps) => {
   return (
     <Container>
       <SplashScreenContainer style={{ opacity }}>
-        <Title>WOOKIE MOVIES</Title>
+        <Title>Wookie Movies</Title>
         <MovieAnimation />
       </SplashScreenContainer>
     </Container>
