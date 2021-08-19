@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -44,22 +44,15 @@ const NavigationHeader = ({
   route,
   title,
 }: INavigationHeaderProps) => {
-  const { getMovieHeaderData, favoriteMoviesMap } = useUserContext();
   const { movie } = route.params;
-  let movieAction;
-  let movieHeartColor;
-  let movieHeartIcon;
-  const { action, heartColor, heartIcon } = getMovieHeaderData(movie.id);
-  movieAction = action;
-  movieHeartColor = heartColor;
-  movieHeartIcon = heartIcon;
+  const { getMovieHeaderData, favoriteMoviesMap } = useUserContext();
+  const [headerData, setHeaderData] = useState(getMovieHeaderData(movie.id));
 
   useEffect(() => {
-    const { action, heartColor, heartIcon } = getMovieHeaderData(movie.id);
-    movieAction = action;
-    movieHeartColor = heartColor;
-    movieHeartIcon = heartIcon;
-  }, [favoriteMoviesMap]);
+    setHeaderData(getMovieHeaderData(movie.id));
+  }, [favoriteMoviesMap.size]);
+
+  const { action, heartColor, heartIcon } = headerData;
 
   return (
     <SafeAreView>
@@ -72,13 +65,13 @@ const NavigationHeader = ({
         </IconBtn>
         <Title length={movie.title.length}>{title}</Title>
         <IconBtn
-          onPress={() => movieAction(movie)}
+          onPress={() => action(movie)}
           {...testID('navigation-header-heart-icon-btn')}
         >
           <Ionicons
             size={30}
-            name={movieHeartIcon as 'heart' | 'heart-outline'}
-            color={movieHeartColor}
+            name={heartIcon as 'heart' | 'heart-outline'}
+            color={heartColor}
           />
         </IconBtn>
       </Container>
