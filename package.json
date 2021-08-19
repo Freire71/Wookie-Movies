@@ -41,6 +41,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest-expo": "^42.1.0",
+    "msw": "^0.34.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-reanimated": "^2.2.0",
     "react-test-renderer": "16.14.0",
