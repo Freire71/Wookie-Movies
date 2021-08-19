@@ -9,9 +9,9 @@ interface IFavoriteMoviesListProps {
   onMoviePress: (movie: Movie) => void;
 }
 
-export const EMPTY_LIST_MESSAGE_TITLE =
+const EMPTY_LIST_MESSAGE_TITLE =
   'You do not have marked any movie as your favorite';
-export const EMPTY_LIST_MESSAGE_SUBTITLE =
+const EMPTY_LIST_MESSAGE_SUBTITLE =
   'To favorite a movie press the ♡ icon on the movie details page';
 
 const FavoriteMoviesList = ({

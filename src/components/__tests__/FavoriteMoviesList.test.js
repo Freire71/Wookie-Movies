@@ -1,10 +1,7 @@
 import 'react-native';
 import React from 'react';
 import { render, movies, fireEvent } from '../../utils/Tests';
-import FavoriteMoviesList, {
-  EMPTY_LIST_MESSAGE_TITLE,
-  EMPTY_LIST_MESSAGE_SUBTITLE,
-} from '../FavoriteMoviesList';
+import FavoriteMoviesList from '../FavoriteMoviesList';
 
 const moviesList = [movies[0], movies[1]];
 
@@ -47,8 +44,12 @@ describe('<FavoriteMoviesList />', () => {
       expect(err).toBeDefined(); // There are no list items
     }
 
-    const messageTitle = getByText(EMPTY_LIST_MESSAGE_TITLE);
-    const messageSubtitle = getByText(EMPTY_LIST_MESSAGE_SUBTITLE);
+    const messageTitle = getByText(
+      'You do not have marked any movie as your favorite'
+    );
+    const messageSubtitle = getByText(
+      'To favorite a movie press the ♡ icon on the movie details page'
+    );
 
     expect(messageTitle).toBeDefined();
     expect(messageSubtitle).toBeDefined();

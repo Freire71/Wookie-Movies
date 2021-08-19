@@ -1,11 +1,7 @@
 import 'react-native';
 import React from 'react';
 import { render, movies, fireEvent } from '../../utils/Tests';
-import MoviesSearchList, {
-  EMPTY_LIST_MESSAGE_TITLE,
-  EMPTY_LIST_MESSAGE_SUBTITLE,
-  ERROR_MESSAGE,
-} from '../MoviesSearchList';
+import MoviesSearchList from '../MoviesSearchList';
 
 const moviesList = [movies[0], movies[1]];
 
@@ -35,7 +31,9 @@ describe('<MoviesSearchList />', () => {
         isFetching={false}
       />
     );
-    const errorMessage = getByText(ERROR_MESSAGE);
+    const errorMessage = getByText(
+      'Ops... Something went wrong. Please try again later'
+    );
     expect(errorMessage).toBeDefined();
   });
   it('should call onPress function passing movie as parameter when it gets pressed', () => {
@@ -60,8 +58,10 @@ describe('<MoviesSearchList />', () => {
         isFetching={false}
       />
     );
-    const emptyMessage = getByText(EMPTY_LIST_MESSAGE_TITLE);
-    const emptySubtitle = getByText(EMPTY_LIST_MESSAGE_SUBTITLE);
+    const emptyMessage = getByText("Unfortunately we don't have this movie 😢");
+    const emptySubtitle = getByText(
+      'Try a different movie name or enjoy the movies available on our home page'
+    );
     expect(emptyMessage).toBeDefined();
     expect(emptySubtitle).toBeDefined();
   });

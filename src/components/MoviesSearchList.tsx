@@ -13,12 +13,10 @@ interface IMoviesSearchListProps {
   isFetching: boolean;
 }
 
-export const EMPTY_LIST_MESSAGE_TITLE =
-  "Unfortunately we don't have this movie 😢";
-export const EMPTY_LIST_MESSAGE_SUBTITLE =
+const EMPTY_LIST_MESSAGE_TITLE = "Unfortunately we don't have this movie 😢";
+const EMPTY_LIST_MESSAGE_SUBTITLE =
   'Try a different movie name or enjoy the movies available on our home page';
-export const ERROR_MESSAGE =
-  'Ops... Something went wrong. Please try again later';
+const ERROR_MESSAGE = 'Ops... Something went wrong. Please try again later';
 
 const MoviesSearchList = ({
   data,
