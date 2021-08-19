@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 import { StackParamsList } from '../../App';
 import { useUserContext } from '../providers/UserProvider';
+import { testID } from '../utils/Tests';
 
 export interface PageHeaderAction {
   title: string;
@@ -48,7 +49,6 @@ const NavigationHeader = ({
   let movieAction;
   let movieHeartColor;
   let movieHeartIcon;
-
   const { action, heartColor, heartIcon } = getMovieHeaderData(movie.id);
   movieAction = action;
   movieHeartColor = heartColor;
@@ -64,11 +64,17 @@ const NavigationHeader = ({
   return (
     <SafeAreView>
       <Container>
-        <IconBtn onPress={() => navigation.goBack()}>
+        <IconBtn
+          {...testID('navigation-header-go-back-btn')}
+          onPress={() => navigation.goBack()}
+        >
           <Ionicons size={30} name="chevron-back" color="#FFF" />
         </IconBtn>
         <Title length={movie.title.length}>{title}</Title>
-        <IconBtn onPress={() => movieAction(movie)}>
+        <IconBtn
+          onPress={() => movieAction(movie)}
+          {...testID('navigation-header-heart-icon-btn')}
+        >
           <Ionicons
             size={30}
             name={movieHeartIcon as 'heart' | 'heart-outline'}
