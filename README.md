@@ -1,48 +1,56 @@
-### Objective
+# Wookie Movies
+The Wookie Movies app is a mobile application to help movies affectionate to stay up-to-date with new movies releases.  
+It also helps users to search for their favorite movies. They can also mark movies as favorites and they will be displayed in the favorites section.
 
-Your assignment is to implement a React Native movie listing app.
+## Screenshots
+<p>
+  <img src="./samples/screenshots/splash.png"  width="200">
+  <img src="./samples/screenshots/home.png"  width="200">
+  <img src="./samples/screenshots/movie-details.png"  width="200">
+  <img src="./samples/screenshots/search-page.png"  width="200">
+  <img src="./samples/screenshots/favorites.png"  width="200">
+</p>
 
-### Brief
+## Local development
+- Run `yarn` to install projects dependencies. It is also recommended to install `expo-cli` you can do this by running `yarn global expo-cli`
+- To start the development server run `yarn start`. 
+- Press `i` to open the app in an iOS simulator or `a` to open it in an Android simulator
+- This project was developed with the following device simulators: 
+  - Iphone SE
+  - Iphone 12 Pro Max
+  - Iphone 11
+  - Google Pixel 2
 
-You are the owner of a movie theater in **Thikkiiana City,** on the Wookiee homeworld of Kashyyyk. Your customers are bored with the never changing selection and are asking for something completely different - they want to see what's playing on Earth. Wookies are the main exporter of Computer Technology for the New Republic so naturally you roll up your sleeves and get to work. You quickly scribble down some notes and after a few hours of relentless work you have a design in mind.
+## Testing 
+- Application testing is written using `@testing-library/react-native` and the test runner is `jest`
+- To extend jest rules `@testing-library/jest-native` was used 
+- To test network layer `msw` was used 
+- To run all tests: `yarn test` 
+- To run jest in watch mode (recommended for development): `yarn test:watch`
+- To get code coverage: `yarn test:coverage`. This project has test coverage above 90%
+<p>
+  <img src="./samples/screenshots/coverage.png"  width="500">
+</p>
 
-### Tasks
+## Main Technologies
+- Expo
+- React Native (0.63)
+- React Navigation
+- React Query
+- Axios
+- Async Storage
+- Lottie 
+- Styled Components
 
--   Implement a React Native movie listing app
--   Build out the project to the designs inside the `/Designs` folder
--   Connect your application to the **CodeSubmit Movie Database** at `https://wookie.codesubmit.io/movies`
--   For authentication pass the `"Authorization: Bearer Wookie2019"` header
--   Parse the API response and display the results as outlined in the design. **Make sure to group movies by categories**.
--   Implement a detail view for the movies in the list
--   Implement the search view by connecting to `https://wookie.codesubmit.io/movies?q=<search_term>`
--   Surprise us! Add a feature that you think would work well here (for instance, advanced search, integration with other API, a "Favorite" functionality)
-    -   Describe the feature in separate markdown file
+## Extra Feature: Favorite Movies
+This feature turns possible for users to favorite movies on the movie details page. To favorite a movie, users need to press on heart icon on the top right corner of movie details page. To see all favorited movies there's a tab on bottom tab navigator marked with a heart icon as well. This feature uses React's Context API and also provides a custom hook `useUserContext` to easily consume data. When the application starts, it loads from Async Storage all favorited movies. When a user favorites a movie or removes a movie from favorites async storage is immediately triggered to persist the user's action. 
 
-### Deliverables
+## Next Steps 
+[ ] Integrate with Rotten Tomatoes API to enrich movie details page.  
+[ ] Create an advanced search feature to habilitate users to query movies by actors, directors, years or genres.
 
-Make sure to include all source code in this repository.
-
-For iOS, include a assignment.zip file containing your compressed .app bundle **in the root of the repository**.
-Your .app bundle must represent a simulator build of your app. After running in iOS Simulator via Xcode, look in ~/Library/Developer/Xcode/DerivedData/<project-name>/Build/Products/Debug-iphonesimulator/.
-Alternatively, you may run xcodebuild -sdk iphonesimulator (if you use .xcodeproj) or xcodebuild -sdk iphonesimulator -workspace Sample.xcworkspace/ -scheme <your-scheme> -configuration Debug (if you use .xcworkspace) in your project directory, then zip the .app bundle in build/Debug-iphonesimulator/.
-
-For Android, include assignment.apk containing your app **in the root of the repository**.
-After your app is built, either via Android Studio or by running the command ./gradlew assembleDebug in your project directory, look in <project-name>/<module-name>/build/outputs/apk/.
-
-### Evaluation Criteria
-
--   **React Native** best practices
--   Show us your work through your commit history
--   Completeness: did you complete the features?
--   Correctness: does the functionality act in sensible, thought-out ways?
--   Maintainability: is it written in a clean, maintainable way?
--   Testing: is the system adequately tested?
-
-### CodeSubmit
-
-Please organize, design, test and document your code as if it were
-going into production - then push your changes to the master branch. After you have pushed your code, you may submit the assignment on the assignment page.
-
-All the best and happy coding,
-
-The finn GmbH Team
+## Credits 
+App developed by: Alex Freire Spinola  
+[Lottie clapperboard animation](https://lottiefiles.com/19117-movie-clapperboard)   
+[App icon](https://www.flaticon.com/free-icon/clapperboard_1038100?term=movie&page=1&position=12&page=1&position=12&related_id=1038100&origin=search)  
+[Cinema Booking App - Concept Layout ](https://dribbble.com/shots/16222673/attachments/8084825?mode=media)  
