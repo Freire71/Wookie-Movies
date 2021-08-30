@@ -12,7 +12,7 @@ It also helps users to search for their favorite movies. They can also mark movi
 </p>
 
 ## Local development
-- Run `yarn` to install projects dependencies. It is also recommended to install `expo-cli` you can do this by running `yarn global expo-cli`
+- Run `yarn` to install projects dependencies. It is also recommended to install `expo-cli` you can do this by running `yarn global add expo-cli`
 - To start the development server run `yarn start`. 
 - Press `i` to open the app in an iOS simulator or `a` to open it in an Android simulator
 - This project was developed with the following device simulators: 
