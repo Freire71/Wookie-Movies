@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { StackParamsList } from '../../App';
 import { useUserContext } from '../providers/UserProvider';
 import { testID } from '../utils/Tests';
+import { NativeStackHeaderProps } from '@react-navigation/native-stack/lib/typescript/src/types';
 
 export interface PageHeaderAction {
   title: string;
@@ -12,9 +13,7 @@ export interface PageHeaderAction {
   onPress: () => void;
 }
 
-interface INavigationHeaderProps
-  extends NativeStackScreenProps<StackParamsList, 'MovieDetails'> {
-  navigation: any;
+interface INavigationHeaderProps extends NativeStackHeaderProps {
   title: string;
 }
 
@@ -44,7 +43,7 @@ const NavigationHeader = ({
   route,
   title,
 }: INavigationHeaderProps) => {
-  const { movie } = route.params;
+  const { movie } = (route as any).params;
   const { getMovieHeaderData, favoriteMoviesMap } = useUserContext();
   const [headerData, setHeaderData] = useState(getMovieHeaderData(movie.id));
 
